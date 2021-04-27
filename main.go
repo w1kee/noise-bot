@@ -42,9 +42,9 @@ var encodeOptions = dca.StdEncodeOptions
 func main() {
 	encodeOptions.Volume = volume
 	setupSounds()
-	tok, err := getToken("token")
-	if err != nil {
-		log.Fatal("error getting token:", err)
+	tok, ok := getToken("TOKEN")
+	if !ok {
+		log.Fatal("TOKEN envvar not specified")
 	}
 	s, err := discordgo.New("Bot " + tok)
 	if err != nil {
@@ -67,10 +67,8 @@ func main() {
 	<-make(chan struct{})
 }
 
-func getToken(fp string) (string, error) {
-	tok, err := os.ReadFile(fp)
-	// return string, and with removed newline
-	return string(tok[:len(tok)-1]), err
+func getToken(key string) (string, bool) {
+	return os.LookupEnv(key)
 }
 
 func player(session *discordgo.Session) {
