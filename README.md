@@ -8,7 +8,7 @@ Go 1.16, POSIX shell, git
 - `git clone https://github.com/w1kee/noise-bot`
 - `cd noise-bot`
 - `mkdir sounds`
-- copy a bunch of short sounds into sounds directory and name them to match regex: `/^[A-Za-z0-9]+$/` + extension
+- copy a bunch of short mp3s into sounds directory and name them to match regex: `/^[A-Za-z0-9]+$/` + extension
 - `go build`
 - `echo "YOUR-DISCORD-TOKEN" > token`
 - `./noise-bot`
